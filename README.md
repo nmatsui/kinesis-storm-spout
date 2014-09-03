@@ -33,6 +33,23 @@ The samples folder includes a sample topology and sample bolt, using the number 
 + Replay failed records
 + Handle closed, split, and merged shards 
 
+## BugFix (nmatsui)
+
++ ZookeeperShardState.java : remove unexpected catch clause because IOException is never thrown in body of corresponding try statement
+
+## Added Future (nmatsui)
++ Add "build.sbt" for SBT
++ You can build this repository by `sbt compile`
++ You can use this repository from other sbt project like below:
+
+```scala:build.sbt
+// build.sbt
+
+lazy val root = project.in(file(".")).dependsOn(kinesisStromSpout)
+
+lazy val kinesisStromSpout = uri("https://github.com/nmatsui/kinesis-storm-spout.git#develop")
+```
+
 ## Related Resources
 
 [Amazon Kinesis Developer Guide](http://docs.aws.amazon.com/kinesis/latest/dev/introduction.html)  
